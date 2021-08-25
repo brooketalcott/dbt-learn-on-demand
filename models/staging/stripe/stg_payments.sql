@@ -6,7 +6,7 @@ with payments as (
         status,
         amount / 100 as amount, --tutorial says this is in cents
         created as created_dt
-    from dbt-tutorial.stripe.payment
+    from {{ source('stripe','payment') }}
 )
 
 select * from payments
