@@ -4,7 +4,7 @@ with payments as (
         orderid as order_id,
         paymentmethod as payment_method,
         status,
-        amount / 100 as amount, --tutorial says this is in cents
+        {{pennies_to_dollars('amount')}} as amount,
         created as created_dt
     from {{ source('stripe','payment') }}
 )
